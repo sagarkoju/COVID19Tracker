@@ -20,23 +20,18 @@ class _CountryPageState extends State<CountryPage> {
       countryData = json.decode(response.body);
     });
   }
-
-  @override
+ @override
   void initState() {
     fetchCountryData();
     super.initState();
   }
-
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search),onPressed: (){
-
-            showSearch(context: context, delegate: Search(countryData));
-
-          },)
+                showSearch(context: context, delegate: Search(countryData));  },)
         ],
         title: Text('Country States'),
       ),
@@ -49,8 +44,8 @@ class _CountryPageState extends State<CountryPage> {
                 return Card(
                   child: Container(
                     color: Colors.greenAccent,
-                    height: 130,
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    height: 130.0,
+                    margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Row(
                       children: <Widget>[
                         Container(
@@ -62,47 +57,60 @@ class _CountryPageState extends State<CountryPage> {
                             children: <Widget>[
                               Text(
                                 countryData[index]['country'],
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold , fontSize: 15.0, color: Colors.blue),
                               ),
                               Image.network(
                                 countryData[index]['countryInfo']['flag'],
                                 height: 70,
-                                width: 100,
+                                width: 90,
                               ),
                             ],
                           ),
                         ),
                         Expanded(
                             child: Container(
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'CONFIRMED:' +
-                                    countryData[index]['cases'].toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red,fontSize: 18.0),
+                              padding: EdgeInsets.symmetric(vertical:27.0,),
+                           child: Column(
+                      children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Text(
+                                  'CONFIRMED:' +
+                                      countryData[index]['cases'].toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red,fontSize: 15.0, ),
+                                ),
                               ),
-                              Text(
-                                'ACTIVE:' +
-                                    countryData[index]['active'].toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue,fontSize: 18.0),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal:0.1 ,),
+                                child: Text(
+                                  'ACTIVE:' +
+                                      countryData[index]['active'].toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue,fontSize: 15.0),
+                                ),
                               ),
-                              Text(
-                                'RECOVERED:' +
-                                    countryData[index]['recovered'].toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,fontSize: 18.0),
+                              Padding(
+                                padding: const EdgeInsets.all(0.1),
+                                child: Text(
+                                  'RECOVERED:' +
+                                      countryData[index]['recovered'].toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,fontSize: 15.0),
+                                ),
                               ),
-                              Text(
-                                'DEATHS:' +
-                                    countryData[index]['deaths'].toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 18.0),
+                              Padding(
+                                padding: const EdgeInsets.all(0.1),
+                                child: Text(
+                                  'DEATHS:' +
+                                      countryData[index]['deaths'].toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 15.0),
+                                ),
                               ),
                             ],
                           ),

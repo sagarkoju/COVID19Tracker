@@ -1,7 +1,7 @@
 import 'dart:convert';
-
-import 'package:app11/datasource.dart';
+// import 'package:app11/datasource.dart';
 import 'package:app11/pages/countrypage.dart';
+import 'package:app11/pages/nepal.dart';
 import 'package:app11/panels/InfoPanel.dart';
 import 'package:app11/panels/mostaffected.dart';
 import 'package:app11/panels/worldwidepanel.dart';
@@ -13,7 +13,6 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   Map worldData;
   fetchWorldWideData()async{
@@ -29,14 +28,20 @@ class _HomeState extends State<Home> {
     countryData = json.decode(response.body);
     });
   }
+  Map nepalData;
+  fetchnepalData()async{
+    http.Response response =await http.get("https://nepalcorona.info/api/v1/data/nepal");
+    setState(() {
+    nepalData = json.decode(response.body);
+    });
+  }
 
  Future fetechData() async{
  fetchWorldWideData();
   fetchcountryData();
-  print('fetchData called');
+  fetchnepalData();
+
  }
-
-
   @override
   void initState() {
     fetechData();
@@ -61,21 +66,19 @@ class _HomeState extends State<Home> {
  crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            height: 150.0,
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(10.0),
-            color: Colors.orange,
-            child: Text(DataSource.quote, style: TextStyle(
-              color: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal:10.0, vertical:10.0),
+            child: Text("Nepal" , style: TextStyle(fontSize: 22.0,
               fontWeight: FontWeight.bold,
-              fontSize: 20.0
-            ),),
-          ),
+              color: Colors.white),
+              ),
+            height: 50.0,
+            alignment: Alignment.topLeft
+            ),
+            nepalData ==null?CircularProgressIndicator(): Nepal(nepalData: nepalData,),
           Padding(
             padding: const EdgeInsets.symmetric(vertical:10.0 , horizontal: 10.0),
             child: Row(
-
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: <Widget>[ 
                Text("World Wide" , style: TextStyle(fontSize: 22.0,
               fontWeight: FontWeight.bold,
@@ -91,8 +94,7 @@ class _HomeState extends State<Home> {
                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(15.0),
                    ),
-                            
-                    padding: EdgeInsets.all(10.0),          
+                 padding: EdgeInsets.all(10.0),          
                    child: Text("Regional" , style: TextStyle(fontSize: 16.0,
               fontWeight: FontWeight.bold,
               color: Colors.white),
@@ -120,10 +122,15 @@ class _HomeState extends State<Home> {
           'Recovered':worldData['recovered'].toDouble(),
           'Deaths':worldData['deaths'].toDouble()
         },
-        
+        colorList: [
+          Colors.red,
+          Colors.blue,
+          Colors.green,
+          Colors.grey[900],
+        ] ,
         ),
          Padding(
-           padding: const EdgeInsets.symmetric(horizontal:10.0 , vertical: 5),
+           padding: const EdgeInsets.symmetric(horizontal:10.0 , vertical: 9.0),
            child: Text("Most Affected Countries" , style: TextStyle(fontSize: 22.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white),

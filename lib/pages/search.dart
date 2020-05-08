@@ -1,46 +1,35 @@
 import 'package:app11/datasource.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
-
-
 class Search extends SearchDelegate{
-
-  final List countryList;
-
-  Search(this.countryList);
-
-
-  @override
+ final List countryList;
+ Search(this.countryList);
+ @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
       primaryColor: primaryBlack,
       brightness: DynamicTheme.of(context).brightness
     );
   }
-
-  @override
+ @override
   List<Widget> buildActions(BuildContext context) {
    return [
      IconButton(icon: Icon(Icons.clear), onPressed: (){
        query='';
-
-     })
+    })
    ];
   }
-
-  @override
+ @override
   Widget buildLeading(BuildContext context) {
     return IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: (){
       Navigator.pop(context);
     },);
   }
-
-  @override
+@override
   Widget buildResults(BuildContext context) {
 return Container();
   }
-
-  @override
+ @override
   Widget buildSuggestions(BuildContext context)
   {
     final suggestionList
@@ -48,32 +37,30 @@ return Container();
            query.isEmpty?
            countryList:
            countryList.where((element) => element['country'].toString().toLowerCase().startsWith(query)).toList();
-
    return ListView.builder(
        itemCount: suggestionList.length,
        itemBuilder: (context,index){
      return Card(
        child: Container(
          color: Colors.blueGrey,
-         height: 130,
-         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+         height: 135.0,
+         margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
          child: Row(
            children: <Widget>[
              Container(
-           
-               width: 200,
-               margin: EdgeInsets.symmetric(horizontal: 0.5),
+               width: 200.0,
+               margin: EdgeInsets.symmetric(horizontal: 08.0),
                child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: <Widget>[
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+               children: <Widget>[
                    Text(
                      suggestionList[index]['country'],
-                     style: TextStyle(fontWeight: FontWeight.bold),
+                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue ,fontSize: 15.0),
                    ),
                    Image.network(
                      suggestionList[index]['countryInfo']['flag'],
-                     height: 50,
+                     height: 70,
                      width: 90,
                    ),
                  ],
@@ -81,36 +68,48 @@ return Container();
              ),
              Expanded(
                  child: Container(
-                   
+                    padding: EdgeInsets.symmetric(vertical:27.0,),
                    child: Column(
                      children: <Widget>[
-                       Text(
-                         'CONFIRMED:' +
-                             suggestionList[index]['cases'].toString(),
-                         style: TextStyle(
-                             fontWeight: FontWeight.bold,
-                             color: Colors.red,fontSize: 18.0),
+                       Padding(
+                         padding: const EdgeInsets.all(1.0),
+                         child: Text(
+                           'CONFIRMED:' +
+                               suggestionList[index]['cases'].toString(),
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color: Colors.red,fontSize: 15.0),
+                         ),
                        ),
-                       Text(
-                         'ACTIVE:' +
-                             suggestionList[index]['active'].toString(),
-                         style: TextStyle(
-                             fontWeight: FontWeight.bold,
-                             color: Colors.blue,fontSize: 18.0),
+                       Padding(
+                         padding: const EdgeInsets.symmetric(horizontal: 0.1),
+                         child: Text(
+                           'ACTIVE:' +
+                               suggestionList[index]['active'].toString(),
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color: Colors.blue,fontSize: 15.0),
+                         ),
                        ),
-                       Text(
-                         'RECOVERED:' +
-                             suggestionList[index]['recovered'].toString(),
-                         style: TextStyle(
-                             fontWeight: FontWeight.bold,
-                             color: Colors.green,fontSize: 18.0),
+                       Padding(
+                         padding: const EdgeInsets.all(0.1),
+                         child: Text(
+                           'RECOVERED:' +
+                               suggestionList[index]['recovered'].toString(),
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color: Colors.green,fontSize: 15.0),
+                         ),
                        ),
-                       Text(
-                         'DEATHS:' +
-                             suggestionList[index]['deaths'].toString(),
-                         style: TextStyle(
-                             fontWeight: FontWeight.bold,
-                             color:  Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 18.0),
+                       Padding(
+                         padding: const EdgeInsets.all(0.1),
+                         child: Text(
+                           'DEATHS:' +
+                               suggestionList[index]['deaths'].toString(),
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color:  Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 15.0),
+                         ),
                        ),
                      ],
                    ),
@@ -121,5 +120,4 @@ return Container();
      );
    });
   }
-
-}
+  }

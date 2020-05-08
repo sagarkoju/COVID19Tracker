@@ -12,11 +12,11 @@ class FAQ extends StatelessWidget {
        
        itemCount: DataSource.questionAnswers.length,
        itemBuilder: (context,index){
-       return ExpansionTile(title: Text(DataSource.questionAnswers[index]['question'], style: TextStyle(fontWeight: FontWeight.bold),),
+       return ExpansionTile(title: Text(DataSource.questionAnswers[index]['question'], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0 ),),
        children: <Widget>[
          Padding(
-           padding: const EdgeInsets.all(8.0),
-           child: Text(DataSource.questionAnswers[index]['answer'],style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
+           padding: const EdgeInsets.all(0.0),
+           child: Text(DataSource.questionAnswers[index]['answer'],style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18.0 ),),
          ),
        ],
        );

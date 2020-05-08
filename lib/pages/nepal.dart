@@ -1,8 +1,8 @@
  import 'package:flutter/material.dart';
-class WorldwidePanel extends StatelessWidget {
-  final Map worldData;
- const WorldwidePanel({Key key, this.worldData}) : super(key: key);
- @override
+class Nepal extends StatelessWidget {
+  final Map nepalData;
+ const Nepal({Key key, this.nepalData}) : super(key: key);
+@override
   Widget build(BuildContext context) {
     return Container(
       child: GridView(
@@ -14,29 +14,28 @@ class WorldwidePanel extends StatelessWidget {
          title: 'CONFIRMED',
          panelColor: Colors.red[100],
          textColor: Colors.red,
-         count: worldData["cases"].toString(),
+         count: nepalData['tested_positive'].toString(),
        ),
        StatusPanel(
-         title: 'ACTIVE',
+         title: 'ISOLATION',
          panelColor: Colors.blue[100],
          textColor: Colors.blue,
-         count: worldData['active'].toString(),
+         count: nepalData['in_isolation'].toString(),
        ),
        StatusPanel(
          title: 'RECOVERED',
          panelColor: Colors.green[100],
          textColor: Colors.green,
-         count: worldData['recovered'].toString(),
+         count: nepalData['recovered'].toString(),
        ),
        StatusPanel(
         title: 'DEATH',
          panelColor: Colors.grey[100],
          textColor: Colors.grey,
-         count: worldData['deaths'].toString(),
+         count: nepalData['deaths'].toString(),
        ),
      ],
-      )
-    );
+      ) );
   }
 }
 class StatusPanel extends StatelessWidget {
@@ -45,12 +44,12 @@ final Color textColor;
 final String title;
 final String count;
  const StatusPanel({Key key, this.panelColor, this.textColor, this.title, this.count}) : super(key: key);
-@override
+    @override
   Widget build(BuildContext context) {
     double width =MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(10.0),
-      height: 80.0,
+      margin: EdgeInsets.all(8.0),
+      height: 50.0,
       color: panelColor,
       width: width/2,
       child: Column(
