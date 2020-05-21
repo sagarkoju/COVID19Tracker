@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:app11/pages/countrypage.dart';
 import 'package:app11/pages/nepal.dart';
 import 'package:app11/panels/InfoPanel.dart';
+
 import 'package:app11/panels/mostaffected.dart';
 import 'package:app11/panels/worldwidepanel.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
@@ -50,7 +51,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       appBar: AppBar(
+        
       actions: <Widget>[
           IconButton(icon: Icon(Theme.of(context).brightness==Brightness.light?Icons.lightbulb_outline:Icons.highlight), onPressed: (){
             DynamicTheme.of(context).setBrightness(Theme.of(context).brightness==Brightness.light?Brightness.dark:Brightness.light);
@@ -59,7 +62,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         title: Text('COVID-19 TRACKER'),
       ),
-
+     
       body: RefreshIndicator(
         onRefresh: fetechData,
               child: SingleChildScrollView(child: Column(
@@ -105,6 +108,32 @@ class _HomeState extends State<Home> {
             ),
           ),
         worldData ==null?CircularProgressIndicator(): WorldwidePanel(worldData: worldData,),
+       
+       Padding(
+           padding: const EdgeInsets.symmetric(horizontal:10.0 , vertical: 5),
+           child: Text("Symptom" , style: TextStyle(fontSize: 22.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+                ),
+         ),
+         SizedBox(
+           height: 10.0,
+         ),
+       
+         Row(
+           mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Symtomwidget(image:"assets/caugh.png", title: "Cough",),
+             Symtomwidget(image:"assets/fever.png", title: "Fever",),
+              Symtomwidget(image:"assets/headache.png", title: "Headache",),
+              
+          ],
+         ),
+          SizedBox(
+           height: 10.0,
+         ),
+        
+       
         Padding(
            padding: const EdgeInsets.symmetric(horizontal:10.0 , vertical: 5),
            child: Text("Pie Chart" , style: TextStyle(fontSize: 22.0,
@@ -161,6 +190,39 @@ class _HomeState extends State<Home> {
           )
         ]
         )),
+      ),
+    );
+  }
+}
+
+class Symtomwidget extends StatelessWidget {
+  final String image;
+  final String title;
+  const Symtomwidget({
+    Key key, this.image, this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          offset: Offset(0, 10),
+          blurRadius: 20.0,
+          
+        ),
+      ], ),
+      child: Column(
+        
+        children: <Widget>[
+          Image.asset(image),
+          Text(title, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),)
+        ]
       ),
     );
   }

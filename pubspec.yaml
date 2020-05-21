@@ -26,7 +26,7 @@ dependencies:
   url_launcher:
   shared_preferences:
   http:
-  dynamic_theme:
+  dynamic_theme: 
   pie_chart:
 
 
@@ -48,7 +48,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/flag-400.png
+   - assets/caugh.png
+   - assets/fever.png
+   - assets/headache.png
+   - assets/map.png
+   - assets/virus.png
+   - assets/wash_hands.png
+   - assets/wear_mask.png
+   
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
