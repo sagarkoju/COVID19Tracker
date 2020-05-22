@@ -1,4 +1,4 @@
-package np.sagar.coronaapp
+package com.sagar.coronaapp
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

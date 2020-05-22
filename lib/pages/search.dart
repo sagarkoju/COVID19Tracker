@@ -56,7 +56,7 @@ return Container();
                children: <Widget>[
                    Text(
                      suggestionList[index]['country'],
-                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue ,fontSize: 15.0),
+                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue ,fontSize: 11.0),
                    ),
                    Image.network(
                      suggestionList[index]['countryInfo']['flag'],
@@ -78,7 +78,7 @@ return Container();
                                suggestionList[index]['cases'].toString(),
                            style: TextStyle(
                                fontWeight: FontWeight.bold,
-                               color: Colors.red,fontSize: 15.0),
+                               color: Colors.red,fontSize: 11.0),
                          ),
                        ),
                        Padding(
@@ -88,7 +88,7 @@ return Container();
                                suggestionList[index]['active'].toString(),
                            style: TextStyle(
                                fontWeight: FontWeight.bold,
-                               color: Colors.blue,fontSize: 15.0),
+                               color: Colors.blue,fontSize: 11.0),
                          ),
                        ),
                        Padding(
@@ -98,7 +98,7 @@ return Container();
                                suggestionList[index]['recovered'].toString(),
                            style: TextStyle(
                                fontWeight: FontWeight.bold,
-                               color: Colors.green,fontSize: 15.0),
+                               color: Colors.green,fontSize: 11.0),
                          ),
                        ),
                        Padding(
@@ -108,7 +108,7 @@ return Container();
                                suggestionList[index]['deaths'].toString(),
                            style: TextStyle(
                                fontWeight: FontWeight.bold,
-                               color:  Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 15.0),
+                               color:  Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 11.0),
                          ),
                        ),
                      ],

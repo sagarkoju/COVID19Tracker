@@ -57,7 +57,7 @@ class _CountryPageState extends State<CountryPage> {
                             children: <Widget>[
                               Text(
                                 countryData[index]['country'],
-                                style: TextStyle(fontWeight: FontWeight.bold , fontSize: 15.0, color: Colors.blue),
+                                style: TextStyle(fontWeight: FontWeight.bold , fontSize: 11.0, color: Colors.blue),
                               ),
                               Image.network(
                                 countryData[index]['countryInfo']['flag'],
@@ -79,7 +79,7 @@ class _CountryPageState extends State<CountryPage> {
                                       countryData[index]['cases'].toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.red,fontSize: 15.0, ),
+                                      color: Colors.red,fontSize: 11.0, ),
                                 ),
                               ),
                               Padding(
@@ -89,7 +89,7 @@ class _CountryPageState extends State<CountryPage> {
                                       countryData[index]['active'].toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.blue,fontSize: 15.0),
+                                      color: Colors.blue,fontSize: 11.0),
                                 ),
                               ),
                               Padding(
@@ -99,7 +99,7 @@ class _CountryPageState extends State<CountryPage> {
                                       countryData[index]['recovered'].toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green,fontSize: 15.0),
+                                      color: Colors.green,fontSize: 11.0),
                                 ),
                               ),
                               Padding(
@@ -109,7 +109,7 @@ class _CountryPageState extends State<CountryPage> {
                                       countryData[index]['deaths'].toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 15.0),
+                                      color: Theme.of(context).brightness==Brightness.dark?Colors.grey[100]:Colors.grey[900],fontSize: 11.0),
                                 ),
                               ),
                             ],
